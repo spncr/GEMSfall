@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 16
+version 35
 __lua__
 
 debug = false
@@ -44,16 +44,19 @@ function _draw()
 	 block.draw()
  else
 	 grid.draw()
-		rectfill(40, 32, 87, 47, 0)
-		rect(39, 31, 88, 48, border_color)
+		rectfill(44, 44, 84, 66, 0)
+		rect(44, 44, 84, 66, border_color)
 		if score > 0 then
-			print("score: "..score, 42, 33, 8)
-			print("again? 🅾️❎",42, 41 , 12)
-
+   spr(1, 46, 46)
+			print(score, 59, 47, border_color)
+   spr(2, 75, 46)
+   print("🅾️", 46, 60 , 12)
+   print("❎", 76, 60 , 12)
+   print("retry", 55, 60 , 12)
 		else
-
-			print("move ⬅️⬆️➡️",42, 33, 8)
-		 print("spin 🅾️❎",42, 41 , 12)
+			print("move ⬅️➡️",47, 46, 8)
+   print("drop ⬆️⬇️",47, 53, 2)
+		 print("spin 🅾️❎",47, 60, 12)
 		end
  end
 end
@@ -166,7 +169,7 @@ block = {
 	update = function()
 		local input = btnp(➡️) and 1 or (btnp(⬅️) and -1 or 0)
 
-		if btn(⬆️) then
+		if btn(⬆️) or btn(⬇️) then
 			block.speed = block.max_speed
 		else
 			block.speed = block.min_speed
@@ -486,33 +489,8 @@ board = {
 	end
 }
 
--- grid = {
--- 	right_color = 1,
--- 	top_color = 6,
--- 	bottom_color = 2,
--- 	left_color = 5,
--- 	draw = function()
--- 		for i = 0 , 15 do
--- 				x = i*8
--- 				y = i*8
--- 				line(0, y+7, 128, y+7, grid.bottom_color)
--- 				line(x+7, 0, x+7, 128, grid.right_color)
--- 				line(0, y, 128, y, grid.top_color)
--- 				line(x, 0, x, 128, grid.left_color)
--- 		end
--- 	end
--- }
-
 grid = {
 	cells = {},
-
-	-- for i = 0, 15 do
-	-- 	add(cells, {})
-	-- 	for j = 0, 15 do
-	-- 		add(cells[i], color)
-	-- 	end
-	-- end,
-
 	right_color = 1,
 	top_color = 6,
 	bottom_color = 2,
