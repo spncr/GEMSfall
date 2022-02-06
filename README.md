@@ -5,4 +5,4 @@ A [lumines](https://luminesremastered.com/) inspired gem breaking game, with a c
 I put extra focus on smooth movement, rotation, and using modular tables to represent the elements of the game and stay DRY.
 
 https://spncr.dev
-https://github.com/spencerberry
+https://github.com/spncr
